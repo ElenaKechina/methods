@@ -8,38 +8,38 @@ describe('Character class:', () => {
     }).toThrow();
 
     expect(() => {
-      const hero = new Character('l', 'Magician', 50, 50, 10, 20);
+      const hero = new Character('l', 'Magician');
       delete hero.name;
     }).toThrow();
 
     expect(() => {
-      const hero = new Character('longStringggggg', 'Magician', 50, 50, 10, 20);
+      const hero = new Character('longStringggggg', 'Magician');
       delete hero.name;
     }).toThrow();
 
     expect(() => {
-      const hero = new Character('Elena', 'Magicia', 50, 50, 10, 20);
+      const hero = new Character('Elena', 'Magicia');
       delete hero.name;
     }).toThrow();
   });
 
   test('should return object', () => {
-    const hero = new Character('Merlin', 'Magician', 50, 50, 10, 20);
+    const hero = new Character('Merlin', 'Magician');
 
     const Merlin = {
       name: 'Merlin',
       type: 'Magician',
-      health: 50,
-      level: 50,
-      attack: 10,
-      defence: 20,
+      health: 100,
+      level: 1,
+      attack: 0,
+      defence: 0,
     };
 
     expect(hero).toEqual(Merlin);
   });
 
   test('should return an error when the method is called', () => {
-    const hero = new Character('Merlin', 'Magician', 50, 50, 10, 20);
+    const hero = new Character('Merlin', 'Magician');
     hero.health = 0;
 
     expect(() => {
@@ -52,13 +52,15 @@ describe('Character class:', () => {
   });
 
   test('should return the correct object on the method "levelUp"', () => {
-    const hero = new Character('Merlin', 'Magician', 50, 50, 100, 200);
+    const hero = new Character('Merlin', 'Magician');
+    hero.attack = 100;
+    hero.defence = 200;
 
     const trueMerlin = {
       name: 'Merlin',
       type: 'Magician',
       health: 100,
-      level: 51,
+      level: 2,
       attack: 120,
       defence: 240,
     };
@@ -69,13 +71,15 @@ describe('Character class:', () => {
   });
 
   test('should return the correct object on the method "damage"', () => {
-    const hero = new Character('Merlin', 'Magician', 50, 50, 10, 10);
+    const hero = new Character('Merlin', 'Magician');
+    hero.attack = 10;
+    hero.defence = 10;
 
     const trueMerlin = {
       name: 'Merlin',
       type: 'Magician',
-      health: 41,
-      level: 50,
+      health: 91,
+      level: 1,
       attack: 10,
       defence: 10,
     };
